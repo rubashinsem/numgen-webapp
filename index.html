@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Генератор Номеров РФ</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="roulette">Рулетка</button>
+            <button class="tab" data-tab="profile">Профиль</button>
+            <button class="tab" data-tab="top">
+                Топ-100
+                <span class="badge" id="top-badge">0</span>
+            </button>
+        </nav>
+
+        <!-- РУЛЕТКА -->
+        <main class="tab-content active" id="tab-roulette">
+            <div class="plate-wrapper">
+                <div class="plate-svg-wrapper" id="plate-wrap">
+                    <svg viewBox="0 0 520 112" xmlns="http://www.w3.org/2000/svg" class="plate-svg" id="roulette-plate">
+                        <rect x="2" y="2" width="516" height="108" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+                        <circle cx="20" cy="56" r="3" fill="#000"/>
+                        <circle cx="500" cy="18" r="3" fill="#000"/>
+                        <line x1="428" y1="8" x2="428" y2="104" stroke="#000" stroke-width="2.5"/>
+                        <text id="pl-l1" x="52" y="82" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="76" fill="#000">А</text>
+                        <text id="pl-d1" x="118" y="82" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="76" fill="#000" letter-spacing="2">000</text>
+                        <text id="pl-l2" x="300" y="82" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="76" fill="#000">А</text>
+                        <text id="pl-l3" x="368" y="82" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="76" fill="#000">А</text>
+                        <text id="pl-region" x="474" y="48" font-family="'Arial Black',Arial,sans-serif" font-weight="900" font-size="38" fill="#000" text-anchor="middle">77</text>
+                        <text x="436" y="90" font-family="Arial,sans-serif" font-weight="700" font-size="13" fill="#000" letter-spacing="0.5">RUS</text>
+                        <g transform="translate(470, 78)">
+                            <rect width="30" height="7" fill="#fff" stroke="#000" stroke-width="0.5"/>
+                            <rect y="7" width="30" height="7" fill="#0039a6"/>
+                            <rect y="14" width="30" height="7" fill="#d52b1e"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="combo" id="combo"></div>
+                <div class="plate-price" id="plate-price"></div>
+            </div>
+
+            <button class="spin-btn" id="spin-btn">
+                <span class="spin-text">КРУТИТЬ</span>
+            </button>
+
+            <div class="info" id="info">Нажми «Крутить», чтобы получить номер</div>
+        </main>
+
+        <!-- ПРОФИЛЬ -->
+        <main class="tab-content" id="tab-profile">
+            <div class="profile-card">
+                <div class="profile-avatar" id="profile-avatar">И</div>
+                <div class="profile-name" id="profile-name">Игрок</div>
+                <div class="profile-sub" id="profile-sub">Играю в рулетку номеров</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-box-label">Всего круток</div>
+                    <div class="stat-box-value" id="st-spins">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Уникальных</div>
+                    <div class="stat-box-value" id="st-unique">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Средняя цена</div>
+                    <div class="stat-box-value" id="st-avg">0 ₽</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-box-label">Общая стоимость</div>
+                    <div class="stat-box-value" id="st-total">0 ₽</div>
+                </div>
+            </div>
+
+            <div class="section-header">
+                <h3>Лучший номер</h3>
+            </div>
+            <div id="best-plate-container"></div>
+        </main>
+
+        <!-- ТОП-100 -->
+        <main class="tab-content" id="tab-top">
+            <div class="section-header">
+                <h3>Топ-100 номеров по стоимости</h3>
+                <span class="hint">Показаны только лучшие из твоей коллекции</span>
+            </div>
+            <div class="top-list" id="top-list"></div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
