@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Генератор Номеров РФ</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="balance-card">
+                <div class="balance-label">💰 Баланс</div>
+                <div class="balance-value" id="balance">50 000 ₽</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🚗 Гараж</div>
+                <div class="stat-value" id="garage-count">0</div>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-tab="roulette">🎰 Рулетка</button>
+            <button class="tab" data-tab="inventory">
+                📦 Инвентарь
+                <span class="badge" id="inv-badge">0/3</span>
+            </button>
+            <button class="tab" data-tab="garage">🚗 Гараж</button>
+            <button class="tab" data-tab="shop">🏪 Автосалон</button>
+        </nav>
+
+        <!-- РУЛЕТКА -->
+        <main class="tab-content active" id="tab-roulette">
+            <div class="plate-wrapper">
+                <div class="plate-real" id="plate">
+                    <div class="plate-main">
+                        <div class="plate-letter" id="l1">А</div>
+                        <div class="plate-digits" id="d1">000</div>
+                        <div class="plate-letter" id="l2">А</div>
+                        <div class="plate-letter" id="l3">А</div>
+                    </div>
+                    <div class="plate-side">
+                        <div class="plate-region-num" id="region">77</div>
+                        <div class="plate-country">
+                            <span class="plate-rus">RUS</span>
+                            <span class="plate-flag">
+                                <svg viewBox="0 0 9 6" width="22" height="15">
+                                    <rect width="9" height="2" fill="#fff"/>
+                                    <rect y="2" width="9" height="2" fill="#0039a6"/>
+                                    <rect y="4" width="9" height="2" fill="#d52b1e"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="combo" id="combo"></div>
+            </div>
+
+            <button class="spin-btn" id="spin-btn">
+                <span class="spin-price">5000 ₽</span>
+                <span class="spin-text">КРУТИТЬ</span>
+            </button>
+
+            <div class="info" id="info">Нажми «Крутить», чтобы получить номер</div>
+        </main>
+
+        <!-- ИНВЕНТАРЬ -->
+        <main class="tab-content" id="tab-inventory">
+            <div class="section-header">
+                <h3>📦 Номера (макс. 3 слота)</h3>
+                <span class="hint">Если слоты заняты — номер продаётся автоматически</span>
+            </div>
+            <div class="inv-grid" id="inv-grid"></div>
+            <div class="inv-actions" id="inv-actions"></div>
+        </main>
+
+        <!-- ГАРАЖ -->
+        <main class="tab-content" id="tab-garage">
+            <div class="section-header">
+                <h3>🚗 Мой гараж</h3>
+                <span class="hint">Нажми на машину, чтобы открыть и надеть номер</span>
+            </div>
+            <div class="garage-grid" id="garage-grid"></div>
+        </main>
+
+        <!-- АВТОСАЛОН -->
+        <main class="tab-content" id="tab-shop">
+            <div class="section-header">
+                <h3>🏪 Автосалон</h3>
+                <span class="hint">Купи машину, чтобы надеть на неё номер</span>
+            </div>
+            <div class="shop-grid" id="shop-grid"></div>
+        </main>
+    </div>
+
+    <!-- МОДАЛКА -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Машина</h3>
+            <div id="modal-body"></div>
+            <button class="modal-close" id="modal-close">Закрыть</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
